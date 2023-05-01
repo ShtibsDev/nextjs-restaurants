@@ -1,7 +1,7 @@
 import ReservationCard from './components/ReservationCard';
 import RestaurantNavbar from './components/RestaurantNavbar';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RestaurantLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<header className="h-96 overflow-hidden">
