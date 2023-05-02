@@ -28,6 +28,18 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/app": [
+        "./app/*"
+      ],
+      "@/components/*": [
+        "./app/components/*"
+      ],
+      "@/utils/*": [
+        "./app/utils/*"
+      ],
+      "@/icons/*": [
+        "./public/icons/*"
       ]
     }
   },

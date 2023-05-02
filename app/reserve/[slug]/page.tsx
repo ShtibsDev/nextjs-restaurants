@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import ReservationForm from './components/ReservationForm';
+import { metadata } from '@/app/layout';
 
 type ReservationPageProps = {};
 
 const ReservationPage: FC<ReservationPageProps> = ({}) => {
+	metadata.title = 'OpenTable | Reservation';
 	return (
 		<div className="border-t h-screen py-9 w-3/5 m-auto">
 			<header>
