@@ -1,7 +1,27 @@
+import { PrismaClient } from '@prisma/client';
 import RestaurantCard from './components/RestaurantCard';
 import SearchBar from './components/SearchBar';
 
-export default function Home() {
+const prisma = new PrismaClient();
+
+const fetchRestaurants = async () => {
+	const restaurants = await prisma.restaurant.findMany({
+		select: {
+			id: true,
+			name: true,
+			price: true,
+			main_image: true,
+			cuisine: true,
+			slug: true,
+			location: true,
+		},
+	});
+	return restaurants;
+};
+
+export default async function Home() {
+	const restaurants = await fetchRestaurants();
+
 	return (
 		<>
 			<header className="h-64 bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2 text-center ">
@@ -9,7 +29,9 @@ export default function Home() {
 				<SearchBar />
 			</header>
 			<section className="py-3 px-36 mt-10 flex flex-wrap justify-center">
-				<RestaurantCard />
+				{restaurants.map((r) => (
+					<RestaurantCard restaurant={r} />
+				))}
 			</section>
 		</>
 	);
